@@ -7,8 +7,8 @@ import os
 import sys
 
 _addon = xbmcaddon.Addon()
-_id = _addon.getAddonInfo('id').decode('utf-8')
-_path = _addon.getAddonInfo('path').decode('utf-8')
+_id = _addon.getAddonInfo('id')
+_path = _addon.getAddonInfo('path')
 _skin = os.path.basename(
             os.path.normpath(xbmc.translatePath('special://skin/')))
 _xml = 'Custom_Screensaver_1166.xml'
