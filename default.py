@@ -15,29 +15,34 @@ _xml = 'Custom_Screensaver_1166.xml'
 
 
 class Screensaver(xbmcgui.WindowXMLDialog):
-    
+
     class ExitMonitor(xbmc.Monitor):
-        
-        def __init__(self, exit_callback):
+        def __init__(self, exit_callback=None):
             super().__init__()
             self.exit_callback = exit_callback
-            
+
         def onScreensaverDeactivated(self):
             log('Screensaver Deactivated')
-            self.exit_callback()
-            
+            if self.exit_callback:
+                try:
+                    self.exit_callback()
+                except Exception as e:
+                    log(f"Error in exit_callback: {e}", level=xbmc.LOGERROR)
+
         def onScreensaverActivated(self):
             log('Screensaver Activated')
 
     def onInit(self):
+        log("Screensaver onInit()")
         self.monitor = self.ExitMonitor(self.exit)
-        
+
     def exit(self):
+        log("Screensaver exit()")
         self.close()
-        
-        
+
+
 def log(msg, level=xbmc.LOGDEBUG):
-    message = '{}: {}'.format(_id, msg)
+    message = f'{_id}: {msg}'
     xbmc.log(msg=message, level=level)
 
 
