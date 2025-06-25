@@ -1,4 +1,4 @@
-# Update with AI for Kodi Nexus> support. Tested, works :) 
+## Update with AI for Kodi Nexus> support. Tested, works :) 
 # -*- coding: utf-8 -*-
 import xbmc
 import xbmcaddon
